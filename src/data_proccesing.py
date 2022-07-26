@@ -15,7 +15,8 @@ feature_selector = VarianceThreshold(threshold=1.5)
 best_data = ['f_07', 'f_08', 'f_09', 'f_10', 'f_11',
              'f_12', 'f_13', 'f_22', 'f_23', 'f_24',
              'f_25', 'f_26', 'f_27', 'f_28']
-
+#powertransform used for making the data clsoer to normal distribution
+#making the BayessianGaussianMixture work even better
 pt = PowerTransformer()
 train_scaled = pt.fit_transform(train_df[best_data])
 train_scaled = pd.DataFrame(train_scaled, columns=best_data)

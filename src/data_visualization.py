@@ -26,6 +26,7 @@ def plot_variance_treshold(df):
 
 
 #plots distribution of every feature
+
 def plot_distribution(df):
     fig = plt.figure(figsize=(16, 10))
     for count, f in enumerate(df.columns):
@@ -35,15 +36,6 @@ def plot_distribution(df):
         plt.xlabel('')
     fig.tight_layout()
     plt.show()
-
-
-#data distribution before feature selection
-#plot_distribution(train_df)
-#data distribution after feature selection
-#plot_distribution(train_scaled)
-
-plot_variance_treshold(train_df)
-
 
 #todo bigger comment about umap
 def umapp(train_scaled,preds,show=True):
