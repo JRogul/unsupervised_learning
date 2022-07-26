@@ -5,9 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.feature_selection import VarianceThreshold
 import umap
-
 plt.matplotlib.use("Qt5Agg")
-
+#load the data
 train_scaled = data_proccesing.train_scaled
 train_df = data_proccesing.train_df
 
@@ -26,7 +25,6 @@ def plot_variance_treshold(df):
 
 
 #plots distribution of every feature
-
 def plot_distribution(df):
     fig = plt.figure(figsize=(16, 10))
     for count, f in enumerate(df.columns):

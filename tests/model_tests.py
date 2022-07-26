@@ -9,5 +9,4 @@ model_bgm = joblib.load('../models/BayesianGaussianMixture')
 
 X, y = train.predict(model_bgm,train_scaled)
 data_visualization.umapp(train_scaled,y)
-#config.usnupervised_metrics(y, train_scaled, '../models/BayesianGaussianMixture')
-#train.submission(y)
+config.usnupervised_metrics(y, train_scaled, '../models/BayesianGaussianMixture')

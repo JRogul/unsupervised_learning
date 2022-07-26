@@ -13,22 +13,25 @@ from src import config
 import warnings
 warnings.filterwarnings('ignore')
 
+#fit and save the model
 def train(model, df, models_name):
     model.fit(df)
     joblib.dump(model,config.MODELS_PATH + models_name)
 
-
+#get the predictions
 def predict(model, df):
     predictions_proba = model.predict_proba(df)
     predictions = np.argmax(predictions_proba, axis=1)
-    X = np.array(df)
     y = np.array(predictions)
-    return X, y
+    return y
+
 def clasiffier(model,X,y, models_name):
     model.fit(X, y)
     predict = model.predict(X)
     joblib.dump(model, config.MODELS_PATH + models_name)
     return predict
+
+#make sumbission for kaggle
 def submission(predictions):
     sub_df = pd.read_csv(config.SUBMISSIOM_PATH)
     sub_df['Predicted'] = predictions
