@@ -1,7 +1,11 @@
+import pandas as pd
+
 from src import data_proccesing
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.feature_selection import VarianceThreshold
+import umap
+
 plt.matplotlib.use("Qt5Agg")
 
 train_scaled = data_proccesing.train_scaled
@@ -32,7 +36,6 @@ def plot_distribution(df):
     fig.tight_layout()
     plt.show()
 
-#todo umap + visualization
 
 #data distribution before feature selection
 #plot_distribution(train_df)
@@ -40,3 +43,15 @@ def plot_distribution(df):
 #plot_distribution(train_scaled)
 
 plot_variance_treshold(train_df)
+
+
+#todo bigger comment about umap
+def umapp(train_scaled,preds,show=True):
+    reducer = umap.UMAP(n_components=2)
+    embedding = reducer.fit_transform(train_scaled)
+    if show==True:
+        df = pd.DataFrame({'x' : embedding[:,0],
+                           'y' : embedding[:,1],
+                           'clusters' : preds})
+        sns.scatterplot(data=df, x='x', y='y', hue='clusters', palette='Spectral')
+        plt.show()
