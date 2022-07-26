@@ -52,5 +52,7 @@ bgmm_classifier = BayesianGMMClassifier(
     init_params='k-means++'
     )
 
+models_dict = {}
+
 train(bgm, data_proccesing.train_scaled, 'BayesianGaussianMixture')
 X, y = predict(bgm, data_proccesing.train_scaled)
