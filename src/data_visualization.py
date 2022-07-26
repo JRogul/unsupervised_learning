@@ -20,6 +20,8 @@ def plot_variance_treshold(df):
     plt.legend()
     plt.show()
 
+
+#plots distribution of every feature
 def plot_distribution(df):
     fig = plt.figure(figsize=(16, 10))
     for count, f in enumerate(df.columns):
